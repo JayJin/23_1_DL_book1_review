@@ -1,3 +1,6 @@
+# Chap01 Hello Python
+
+
 ## 1.3.1 산술연산
 ```
 - 사칙연산(+, -, *, /)
@@ -231,7 +234,7 @@ sin함수 그래프 그리기
 [<matplotlib.lines.Line2D object at 0x00000227EAB31ED0>]
 >>> plt.show()
 ```
-![screensh](./ch01_Figure_1.png)
+![screensh](./imgs/ch01_Figure_1.png)
 
 ## 1.6.2 pyplot의 기능
 sin함수와 cos함수 그래프 그리기
@@ -263,7 +266,7 @@ Text(0.5, 1.0, 'sin & cos')
 <matplotlib.legend.Legend object at 0x00000227EDF46CB0>
 >>> plt.show()              # 그래프 출력
 ```
-![screensh](./ch01_Figure_2.png)
+![screensh](./imgs/ch01_Figure_2.png)
 
 
 ## 1.6.3 이미지 표시하기
@@ -278,4 +281,4 @@ Text(0.5, 1.0, 'sin & cos')
 >>> plt.show()              # 좌표평면이 표시되는 결과창 표시
 ```
 
-![screensh](./ch01_Figure_3.png)
+![screensh](./imgs/ch01_Figure_3.png)
