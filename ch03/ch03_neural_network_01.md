@@ -164,4 +164,63 @@ ReLU는 입력이 0을 넘으면 그 입력을 그대로 출력하고, 0 이하�
 
  [※ 신경망에서의 행렬 곱 _ ch03_src_code_11.py](./src/ch03_src_code_11.py)
 
- <hr>
+<hr>
+
+## 3.4 3층 신경망 구현하기
+
+<center><img src = "./imgs/ch03_Figure_15.PNG" width = "400"> </center>
+
+### 3.4.1 표기법 설명
+
+<center><img src = "./imgs/ch03_Figure_16.PNG" width = "400"> </center>
+
+### 3.4.2 각 층의 신호 전달 구현하기
+
+<center><img src = "./imgs/ch03_Figure_17.PNG" width = "400"> </center>
+
+2층의 첫 번째 뉴런을 수식으로 나타내면 아래와 같다.
+
+<center><img src = "./imgs/ch03_Figure_18.PNG" width = "200"> </center>
+
+행렬의 곱을 이용하여 위 식을 아래와 같이 간소화 가능하다.
+
+<center><img src = "./imgs/ch03_Figure_19.PNG" width = "150"> </center>
+
+<center><img src = "./imgs/ch03_Figure_20.PNG" width = "400"> </center>
+
+입력층에서 1층으로의 신호 전달
+<center><img src = "./imgs/ch03_Figure_21.PNG" width = "400"> </center>
+
+은닉층에서의 가중치 합(가중 신호와 편향의 총합)을 a로 표기하고 활성화 함수 h()로 변환된 신호를 z로 표기한다. 여기에서 활성화 함수로 시그모이드 함수를 사용한다.
+
+[※ 신경망 1층 계산 _ ch03_src_code_12.py](./src/ch03_src_code_12.py)
+
+1층에서 2층으로의 신호 전달
+
+<center><img src = "./imgs/ch03_Figure_22.PNG" width = "400"> </center>
+
+[※ 신경망 2층 계산 _ ch03_src_code_13.py](./src/ch03_src_code_13.py)
+
+2층에서 출력층으로의 신호 전달
+
+<center><img src = "./imgs/ch03_Figure_23.PNG" width = "400"> </center>
+
+[※ 신경망 출력층 계산 _ ch03_src_code_14.py](./src/ch03_src_code_14.py)
+
+*여기서는 항등함수 identity_function()을 정의하고, 이를 출력층의 활성화 함수로 이용하였다.
+
+*출력층의 활성화 함수는 σ()로 표시하여 은닉층의 활성화 함수 h()와 구분하였다.
+
+### 3.4.3 구현 정리
+
+[※ 신경망 계산 _ ch03_src_code_15.py](./src/ch03_src_code_15.py)
+
+여기서 init_network() 함수는 가중치와 편향을 초기화하고 이들을 딕셔너리 변수 network에 저장한다.
+
+network에서는 각 층에 필요한 매개변수(가중치와 편향)를 저장한다.
+
+forward()함수는 입력 신호를 출력으로 변환하는 처리과정을 구현한다.
+
+<hr>
+
+## 3.5 출력층 설계하기
