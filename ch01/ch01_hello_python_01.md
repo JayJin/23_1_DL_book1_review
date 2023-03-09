@@ -234,7 +234,7 @@ sin함수 그래프 그리기
 [<matplotlib.lines.Line2D object at 0x00000227EAB31ED0>]
 >>> plt.show()
 ```
-![screensh](./imgs/ch01_Figure_1.png)
+<center><img src = "./imgs/ch01_Figure_1.PNG" width = "300"></center>
 
 ## 1.6.2 pyplot의 기능
 sin함수와 cos함수 그래프 그리기
@@ -266,8 +266,7 @@ Text(0.5, 1.0, 'sin & cos')
 <matplotlib.legend.Legend object at 0x00000227EDF46CB0>
 >>> plt.show()              # 그래프 출력
 ```
-![screensh](./imgs/ch01_Figure_2.png)
-
+<center><img src = "./imgs/ch01_Figure_2.PNG" width = "300"></center>
 
 ## 1.6.3 이미지 표시하기
 ```
@@ -280,5 +279,4 @@ Text(0.5, 1.0, 'sin & cos')
 <matplotlib.image.AxesImage object at 0x00000227EDFBFD60>
 >>> plt.show()              # 좌표평면이 표시되는 결과창 표시
 ```
-
-![screensh](./imgs/ch01_Figure_3.png)
+<center><img src = "./imgs/ch01_Figure_3.PNG" width = "300"></center>

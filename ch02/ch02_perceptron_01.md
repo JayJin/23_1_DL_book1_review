@@ -12,7 +12,7 @@
 
 퍼셉트론 신호는 '흐른다(1)/흐르지 않는다(0)'의 두 가지 값을 가진다.
 
-![Alt text](./imgs/ch02_Figure_1.PNG)
+<center><img src = "./imgs/ch02_Figure_1.PNG" width = "200"></center>
 
 - x1, x2는 입력신호
 
@@ -24,7 +24,7 @@
 
 - 뉴런에서 보내온 신호의 총합이 정해진 한계를 넘어설 때만 1을 출력하며, 그 한계를 임계값(θ, theta)이라고 한다.
 
-![Alt text](./imgs/ch02_Figure_2.PNG)
+<center><img src = "./imgs/ch02_Figure_2.PNG" width = "300"></center>
 
 <hr>
 
@@ -84,7 +84,7 @@ OR 게이트 : 입력 신호 중 하나 이상이 1이면 출력이 1이 되는 
 
 θ를 -b(편향, bias)로 치환하면 퍼셉트론 동작이 아래와 같이 변환된다.
 
-![Alt text](./imgs/ch02_Figure_3.PNG)
+<center><img src = "./imgs/ch02_Figure_3.PNG" width = "300"></center>
 
 퍼셉트론은 입력 신호에 가중치를 곱한 값과 편향을 합하여, 그 값이 0을 넘으면 1을 출력하고 그렇지 않으면 0을 출력한다.
 
@@ -111,14 +111,14 @@ XOR 게이트는 배타적 논리합이라는 논리회로이다. x1과 x2중 �
 
 OR 게이트와 NAND 게이트를 시각화 하면 아래와 같이 직선으로 나뉜 두 영역으로 표현이 가능하지만 XOR 게이트는 하나의 직석으로는 표현이 불가능하다.
 
-![Alt text](./imgs/ch02_Figure_4.PNG)
+<center><img src = "./imgs/ch02_Figure_4.PNG" width = "300"></center>
 
 ### 2.4.2 선형과 비선형
 그러나! 직선이라는 제약을 없앤다면 어떨까?
 
 아래 그림과 같은 곡선의 영역을 비선형 영역, 직선의 영역은 선형 영역이라고 한다.
 
-![Alt text](./imgs/ch02_Figure_5.PNG)
+<center><img src = "./imgs/ch02_Figure_5.PNG" width = "200"></center>
 
 <hr>
 
@@ -130,7 +130,7 @@ OR 게이트와 NAND 게이트를 시각화 하면 아래와 같이 직선으로
 
 기존에 알고있는 AND, NAND, OR 게이트를 조합하면 아래와 같이 XOR 게이트처럼 작동하는 구조를 만들 수 있다.
 
-![Alt text](./imgs/ch02_Figure_6.PNG)
+<center><img src = "./imgs/ch02_Figure_6.PNG" width = "300"></center>
 
 진리표는 아래와 같다.
 
@@ -145,7 +145,8 @@ OR 게이트와 NAND 게이트를 시각화 하면 아래와 같이 직선으로
 
 [※ XOR게이트 퍼셉트론 구현 _ ch02_src_code_04.py](./src/ch02_src_code_04.py)
 
-![Alt text](./imgs/ch02_Figure_7.PNG)
+
+<center><img src = "./imgs/ch02_Figure_7.PNG" width = "300"></center>
 
 <hr>
 
