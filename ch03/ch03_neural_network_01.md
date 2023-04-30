@@ -92,13 +92,13 @@
 
 ### 3.2.3 계단 함수의 그래프
 
-[※ 계단함수 그래프 출력 _ ch03_src_code_03.py](./src/ch03_src_code_03.py)
+[※ 계단함수 그래프 출력 _ ch03_src_code_03_step_function.py](./src/ch03_src_code_03_step_function.py)
 
 <center><img src = "./imgs/ch03_Figure_9.PNG" width = "300"> </center>
 
 ### 3.2.4 시그모이드 함수 구현하기
 
-[※ 시그모이드 함수 구현 _ ch03_src_code_04.py](./src/ch03_src_code_04.py)
+[※ 시그모이드 함수 구현 _ ch03_src_code_04_sigmoid.py](./src/ch03_src_code_04_sigmoid.py)
 
 이 함수가 정상적으로 동작하는 이유는 **넘파이의 브로드캐스트** 기능 덕분이다.
 
@@ -132,7 +132,7 @@ ReLU는 입력이 0을 넘으면 그 입력을 그대로 출력하고, 0 이하�
 
 <center><img src = "./imgs/ch03_Figure_13.PNG" width = "200"> </center>
 
-[※ ReLU함수 구현 _ ch03_src_code_07.py](./src/ch03_src_code_07.py)
+[※ ReLU함수 구현 _ ch03_src_code_07_relu.py](./src/ch03_src_code_07_relu.py.py)
 
 <hr>
 
@@ -205,15 +205,18 @@ ReLU는 입력이 0을 넘으면 그 입력을 그대로 출력하고, 0 이하�
 
 <center><img src = "./imgs/ch03_Figure_23.PNG" width = "400"> </center>
 
-[※ 신경망 출력층 계산 _ ch03_src_code_14.py](./src/ch03_src_code_14.py)
+[※ 신경망 출력층 계산 _ ch03_src_code_14_identity_function.py](./src/ch03_src_code_14_identity_function.py.py)
 
 *여기서는 항등함수 identity_function()을 정의하고, 이를 출력층의 활성화 함수로 이용하였다.
+
+항등함수(Identity function) : 입력과 출력이 같은 함수
+
 
 *출력층의 활성화 함수는 σ()로 표시하여 은닉층의 활성화 함수 h()와 구분하였다.
 
 ### 3.4.3 구현 정리
 
-[※ 신경망 계산 _ ch03_src_code_15.py](./src/ch03_src_code_15.py)
+[※ 신경망 계산 _ ch03_src_code_15_init_network,forward.py](./src/ch03_src_code_15_init_network,forward.py)
 
 여기서 init_network() 함수는 가중치와 편향을 초기화하고 이들을 딕셔너리 변수 network에 저장한다.
 
@@ -224,3 +227,64 @@ forward()함수는 입력 신호를 출력으로 변환하는 처리과정을 �
 <hr>
 
 ## 3.5 출력층 설계하기
+
+일반적으로 회귀(Regression)에는 항등함수를, 분류(Classification)에는소프트맥스 함수를 활성화함수로 한다.
+
+### 3.5.1 항등함수와 소프트맥스 함수 구현
+
+소프트맥스 함수(Softmax function)
+
+<center><img src = "./imgs/ch03_Figure_24.PNG" width = "200"> </center>
+
+(n은 출력층의 뉴런 수)
+
+<center><img src = "./imgs/ch03_Figure_25.PNG" width = "200"> </center>
+
+수식의 분모부분을 보면 알 수 있듯이, 출력층의 각 뉴런은 모든 입력신호로부터 영향을 받는다.
+
+[※ softmax함수 예시 _ ch03_src_code_16](./src/ch03_src_code_16.py)
+
+[※ softmax함수 정의 _ ch03_src_code_17.py](./src/ch03_src_code_17.py)
+
+
+### 3.5.2 소프트맥스 함수 구현시 주의점
+
+src_code_17의 식은 지수함수를 이용하는데, a값이 너무 커지게되면 exponential 특성상 매우 큰 값을 출력하게 되고 이는 곧 inf(무한대)로 출력하게 된다. 이를 오버플로라고 한다.
+
+이를 보완하기 위해 식을 아래와 같이 개선할 수 있다.
+
+<center><img src = "./imgs/ch03_Figure_26.PNG" width = "200"> </center>
+
+위 식이 의미하는 바 : 소프트맥스 지수함수를 계산할 때 어떤 정수를 더하거나 빼도 결과는 동일하다.
+
+이는 오버플로를 막기 위해 C'에 입력 신호 중 최대값을 대입하여 보완하는데 이용할 수 있다.
+
+[※ 오버플로 보완 _ ch03_src_code_18.py](./src/ch03_src_code_18.py)
+
+[※ softmax함수 재정의 _ ch03_src_code_19.py](./src/ch03_src_code_19.py)
+
+
+### 3.5.3 소프트맥스 함수의 특징
+
+- 소프트맥스 함수의 출력은 0에서 1.0 사이의 실수이다.
+- 소프트맥스 함수 출력의 총 합은 1이다. 이 성질은 소프트맥스 함수의 출력을 '확률'로 해석이 가능하게 한다. (????)
+- 소프트맥스 함수는 단조 증가함수이기 때문에 함수를 원소에 적용해도 각 원소의 대소관계는 변하지 않는다.
+- 소프트맥스 함수를 적용해도 출력이 가장 큰 뉴런의 위치는 달라지지 않기 때문에, 신경망으로 분류할 때는 출력층의 소프트맥스 함수를 생략해도 된다.
+
+### 3.5.4 출력층의 뉴런 수 정하기
+
+- 출력층의 뉴런 수는 ***분류하고 싶은 클래스 수***로 설정하는 것이 일반적이다.
+
+<hr>
+
+## 3.6 손글씨 숫자 인식
+
+기계학습과 마찬가지로 신경망도 두 단계를 거쳐 문제를 해결한다.
+
+- 1) 훈련 데이터(학습 데이터)를 사용해 가중치 매개변수 학습
+- 2) 앞서 학습한 매개변수를 사용하여 입력데이터를 부누류하는 추론단계 → 신경망의 순전파(Forward propagation)
+
+### 3.6.1 MNIST 데이터셋
+
+원 핫 인코딩 : 정답을 뜻하는 원소만 1이고(hot하고) 나머지는 모두 0인 배열
+one_hot_label이 False이면 '7'이나 '2'와 같이 숫자 형태의 레이블을 저장하고, True 일때는 레이블을 원-핫 인코딩하여 저장한다.
