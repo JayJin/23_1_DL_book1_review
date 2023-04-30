@@ -2,7 +2,7 @@ import numpy as np
 
 def step_function(x):
     y = x>0
-    return y.astype(int)
+    return y.astype(np.int32)
 
 x = np.array([-1.0, 1.0, 2.0])
 print(x)
@@ -10,7 +10,7 @@ print(x)
 y = x > 0
 print(y)        # y값이 bool로 표현
 
-y = y.astype(int)
+y = y.astype(np.int32)
 print(y)        # bool로 표현되던 y값이 0, 1로 변환됨
 
 # 출력 결과
